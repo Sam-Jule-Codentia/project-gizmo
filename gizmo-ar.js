@@ -16,7 +16,7 @@ import { ARButton } from 'three/addons/webxr/ARButton.js';
 var randomGizmos =
 [
     // '/public/assets/gltf/chica.glb',
-    // '/public/assets/gltf/foxy2.glb',
+    '/public/assets/gltf/foxy2.glb',
     '/public/assets/gltf/ferret.glb',
     '/public/assets/gltf/capy.glb',
     '/public/assets/gltf/tomb.glb',
