@@ -148,6 +148,10 @@ button:focus-visible {
   background-color: yellowgreen;
 }
 
+#happinessBar p {
+  color: darkgreen;
+}
+
 #happinessBarProgress {
   width: 100%;
   max-width: 100%;
