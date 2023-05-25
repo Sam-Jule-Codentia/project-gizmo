@@ -64,8 +64,13 @@ function init() {
     
     document.getElementById("ARButton").addEventListener('click', (e) => {
         container.classList.remove("d-none");
-        document.getElementById("overlay").classList.remove("d-none")
         document.getElementById("overlay").classList.add("d-flex")
+        setTimeout(()=>{
+            
+            document.getElementById("overlay").classList.remove("d-none")
+            
+        }, 1500)
+
     })
     
     
@@ -79,6 +84,9 @@ function init() {
 
         if (reticle.visible && isDead) {
             isDead = false;
+            document.getElementById("hydrationBar").dataset.width = 100
+            document.getElementById("hungerBar").dataset.width = 100
+            document.getElementById("happinessBar").dataset.width = 100
             var loader = new GLTFLoader();
             // function to get a random gizmo from array
             function random_gizmo(randomGizmos) {
