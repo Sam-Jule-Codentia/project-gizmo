@@ -31,7 +31,8 @@ animate();
 function init() {
 
     container = document.createElement('div');
-    document.body.appendChild(container);
+    container.classList.add("d-none");
+    document.getElementById("gizmoSpawnPoint").appendChild(container);
 
     scene = new THREE.Scene();
 
@@ -52,7 +53,10 @@ function init() {
     //
 
     document.body.appendChild(ARButton.createButton(renderer, { requiredFeatures: ['hit-test'], optionalFeatures: ['dom-overlay'], domOverlay: { root: document.getElementById("overlay") } }));
-
+    
+    document.getElementById("ARButton").addEventListener('click', (e) => {
+        container.classList.remove("d-none");
+    })
     //
 
     const geometry = new THREE.CylinderGeometry(0.1, 0.1, 0.2, 32).translate(0, 0.1, 0);
