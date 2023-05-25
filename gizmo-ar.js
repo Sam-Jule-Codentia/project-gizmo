@@ -13,9 +13,15 @@ import * as THREE from 'three';
 import { ARButton } from 'three/addons/webxr/ARButton.js';
 
 // Gizmo assets
-let stereo = '/public/assets/gltf/stereo/stereo.gltf';
-let sunflower = '/public/assets/gltf/sunflower/sunflower.gltf';
-let space = '/public/assets/gltf/space/space.gltf';
+var randomGizmos =
+[
+    // '/public/assets/gltf/chica.glb',
+    // '/public/assets/gltf/foxy2.glb',
+    '/public/assets/gltf/ferret.glb',
+    '/public/assets/gltf/capy.glb',
+    '/public/assets/gltf/tomb.glb',
+    '/public/assets/gltf/duck.glb'
+]
 let container;
 let controller;
 let camera, scene, renderer;
@@ -70,7 +76,7 @@ function init() {
                 return randomGizmos[Math.floor(Math.random() * randomGizmos.length)]
             }
 
-            var randomGizmos = [space, stereo, sunflower]
+            
             let gizmoRandomUrl = random_gizmo(randomGizmos)
             if (scene.children.length > 2) {
                 scene.remove(scene.children[3])
