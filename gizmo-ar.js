@@ -8,6 +8,11 @@ import {vec3} from '/public/webxr/render/math/gl-matrix.js';
 import {Ray} from '/public/webxr/render/math/ray.js';
 import './style.css'
 
+// Gizmo assets
+let stereo = '/public/assets/gltf/stereo/stereo.gltf';
+let sunflower = '/public/assets/gltf/sunflower/sunflower.gltf';
+let space = '/public/assets/gltf/space/space.gltf';
+
 // XR globals.
 let xrButton = null;
 let xrRefSpace = null;
@@ -114,10 +119,21 @@ function onSessionEnded(event) {
 xrButton.setSession(null);
 }
 
+// function to get a random gizmo from array
+function random_gizmo (randomGizmos)
+{
+    return randomGizmos[Math.floor(Math.random()*randomGizmos.length)]
+}
+
 const MAX_ANCHORED_OBJECTS = 1;
 let anchoredObjects = [];
 function addAnchoredObjectsToScene(anchor) {
-let flower = new Gltf2Node({url: '/public/assets/gltf/sunflower/sunflower.gltf'});
+    // array of all gizmos to pick from
+    var randomGizmos = [space, stereo, sunflower]
+
+    // select one gizmo
+    let gizmoRandomUrl = random_gizmo(randomGizmos); 
+let flower = new Gltf2Node({url: gizmoRandomUrl});
 scene.addNode(flower);
 anchoredObjects.push({
     anchoredObject: flower,
