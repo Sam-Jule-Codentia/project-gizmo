@@ -312,11 +312,11 @@ export class WebXRButton {
   constructor(options) {
     options = options || {};
 
-    options.color = options.color || 'rgb(80,168,252)';
+    options.color = options.color || '#641e95';
     options.background = options.background || false;
     options.disabledOpacity = options.disabledOpacity || 0.5;
     options.height = options.height || 55;
-    options.corners = options.corners || 'square';
+    options.corners = options.corners || 'round';
     options.cssprefix = options.cssprefix || 'webvr-ui';
 
     // This reads VR as none of the samples are designed for other formats as of yet.
