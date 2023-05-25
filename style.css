@@ -67,16 +67,19 @@ h1 {
 
 .top-menu-needs{
   width: 100%;
-  justify-content: inherit;
+  /* justify-content: inherit; */
   display: flex;
 }
 
 .intro-box{
-  border: 2px solid #641e95;
+  border: 3px solid #641e95;
+  background-color: #ffffff;
   opacity: 0.5;
   border-radius: 25px;
   padding: 1%;
   color: #641e95;
+  box-shadow: 5px 5px #684d68;
+  margin-bottom: 1%;
 }
 
 button {
@@ -91,11 +94,34 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #200329;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+
+#hungerBar {
+  width: 100%;
+  height: 30px;
+  background-color: #e7af50;
+}
+
+#hungerBarProgress {
+  width: 100%;
+  background-color: #877887;
+}
+
+#hydrationBar {
+  width: 100%;
+  height: 30px;
+  background-color: lightblue;
+}
+
+#hydrationBarProgress {
+  width: 100%;
+  background-color: #877887;
 }
 
 @media (prefers-color-scheme: light) {
