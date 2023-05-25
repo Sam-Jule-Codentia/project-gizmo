@@ -138,11 +138,15 @@ function init() {
     var width = 100;
     hunger.dataset.width = width;
 
-    setInterval (() => {
+    var hungerInterval = setInterval (() => {
         var width = parseInt(hunger.dataset.width);
         width--;
         hunger.style.width = width + "%";
         hunger.dataset.width = width;
+        if (hunger.dataset.width <= "0")
+        {
+            clearInterval(hungerInterval)
+        }
     }, 5000)
 
     // * hydration meter process
@@ -150,11 +154,15 @@ function init() {
     var width = 100;
     hydration.dataset.width = width;
 
-    setInterval (() => {
+    var hydrationInterval = setInterval (() => {
         var width = parseInt(hydration.dataset.width);
         width--;
         hydration.style.width = width + "%";
         hydration.dataset.width = width;
+        if (hydration.dataset.width <= "0")
+        {
+            clearInterval(hydrationInterval)
+        }
     }, 3000)
 
     window.addEventListener('resize', onWindowResize);
