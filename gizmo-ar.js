@@ -68,9 +68,9 @@ function init() {
         document.getElementById("overlay").classList.add("d-flex")
     })
     
-
+    
     const geometry = new THREE.CylinderGeometry(0.1, 0.1, 0.2, 32).translate(0, 0.1, 0);
-
+    
     function onSelect() {
 
         if (reticle.visible && !isDead){
@@ -84,49 +84,45 @@ function init() {
             function random_gizmo(randomGizmos) {
                 return randomGizmos[Math.floor(Math.random() * randomGizmos.length)]
             }
-
-            // should show health bars 
-            document.getElementById('overlay').classList.remove('d-none');
-            document.getElementById('overlay').classList.add('d-flex');
             
-            // start stats
-            initStats();
-
+            
             let gizmoRandomUrl = random_gizmo(randomGizmos)
             gizmo = gizmoRandomUrl;
             if (scene.children.length > 2) {
                 scene.remove(scene.children[3])
             }
             console.log(scene.children)
-
-
+            
+            // start stats
+            initStats();
+            
             loader.load(
                 // resource URL
                 gizmoRandomUrl,
                 // called when the resource is loaded
-
+                
                 function (gltf) {
-
+                    
                     gltf.scene.traverse(function (object) {
-
+                        
                         if (object.isMesh) {
                             object.matrix.copyPosition(reticle.matrix)
                             object.position.set(reticle.position.x, reticle.position.y, reticle.position.z)
                             console.log(object.position)
                         }
-
+                        
                     });
-
+                    
                     scene.add(gltf.scene)
                     console.log(reticle.matrix)
                     scene.children[3].position.setFromMatrixPosition(reticle.matrix)
-
+                    
                     gltf.animations; // Array<THREE.AnimationClip>
                     gltf.scene; // THREE.Group
                     gltf.scenes; // Array<THREE.Group>
                     gltf.cameras; // Array<THREE.Camera>
                     gltf.asset; // Object
-
+                    
                 },
                 // called while loading is progressing
                 function (xhr) {
@@ -294,10 +290,14 @@ function render(timestamp, frame) {
 
         }
 
+        // should show health bars 
+        document.getElementById('overlay').classList.remove('d-none');
+        // document.getElementById('overlay').classList.add('d-flex');
+        
     }
-
+    
     renderer.render(scene, camera);
-
+    
 }
 
 function initStats ()
