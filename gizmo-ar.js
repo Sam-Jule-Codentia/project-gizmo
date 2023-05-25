@@ -23,9 +23,6 @@ let arObject = new Node();
 arObject.visible = false;
 scene.addNode(arObject);
 
-let flower = new Gltf2Node({url: '/public/assets/gltf/sunflower/sunflower.gltf'});
-arObject.addNode(flower);
-
 let reticle = new Gltf2Node({url: '/public/assets/gltf/reticle/reticle.gltf'});
 reticle.visible = false;
 scene.addNode(reticle);
@@ -36,9 +33,6 @@ let reticleHitTestResult = null;
 let shadow = new DropShadowNode();
 vec3.set(shadow.scale, 0.15, 0.15, 0.15);
 arObject.addNode(shadow);
-
-const MAX_FLOWERS = 30;
-let flowers = [];
 
 // Ensure the background is transparent for AR.
 scene.clear = false;
@@ -51,6 +45,7 @@ xrButton = new WebXRButton({
     textXRNotFoundTitle: "AR NOT FOUND",
     textExitXRTitle: "EXIT  AR",
 });
+
 document.querySelector('#gizmoSpawnPoint').appendChild(xrButton.domElement);
 
 if (navigator.xr) {
@@ -114,7 +109,7 @@ function onSessionEnded(event) {
 xrButton.setSession(null);
 }
 
-const MAX_ANCHORED_OBJECTS = 30;
+const MAX_ANCHORED_OBJECTS = 1;
 let anchoredObjects = [];
 function addAnchoredObjectsToScene(anchor) {
 let flower = new Gltf2Node({url: '/public/assets/gltf/sunflower/sunflower.gltf'});
