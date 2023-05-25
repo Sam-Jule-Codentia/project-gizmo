@@ -110,6 +110,10 @@ button:focus-visible {
   background-color: #e7af50;
 }
 
+#hungerBar p {
+  color: #624514;
+}
+
 #hungerBarProgress {
   width: 100%;
   max-width: 100%;
@@ -123,6 +127,9 @@ button:focus-visible {
   min-width: 0%;
   height: 30px;
   background-color: lightblue;
+}
+#hydrationBar p {
+  color: #2957c4;
 }
 
 #hydrationBarProgress {
