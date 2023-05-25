@@ -133,6 +133,21 @@ button:focus-visible {
   background-color: #877887;
 }
 
+#happinessBar {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0%;
+  height: 30px;
+  background-color: yellowgreen;
+}
+
+#happinessBarProgress {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0%;
+  background-color: #877887;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

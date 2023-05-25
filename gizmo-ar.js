@@ -175,6 +175,22 @@ function init() {
         }
     }, 3000)
 
+    // * happiness meter process
+    var happiness = document.getElementById("happinessBar");
+    var width = 100;
+    happiness.dataset.width = width;
+
+    var happinessInterval = setInterval (() => {
+        var width = parseInt(happiness.dataset.width);
+        width--;
+        happiness.style.width = width + "%";
+        happiness.dataset.width = width;
+        if (happiness.dataset.width <= "0")
+        {
+            clearInterval(happinessInterval)
+        }
+    }, 10000)
+
     window.addEventListener('resize', onWindowResize);
 
 }

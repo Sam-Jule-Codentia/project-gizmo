@@ -17,6 +17,9 @@
         <div id="hydrationBarProgress">
           <div id="hydrationBar"></div>
         </div>
+        <div id="happinessBarProgress">
+          <div id="happinessBar"></div>
+        </div>
       </div>
       <div class="align-items-center">
           <img style="bottom: 100px;" onclick="feedGizmo()" src="/assets/icons/icon-hunger.png">
@@ -66,6 +69,18 @@
           if (hydration.dataset.width > 100)
           {
             hydration.dataset.width = "100%";
+          }
+      }
+
+      function playWithGizmo() {
+
+          var happiness = document.getElementById("happinessBar")
+          var width = parseInt(happiness.dataset.width) + 30;
+          happiness.style.width = width + "%"
+          happiness.dataset.width = width;
+          if (happiness.dataset.width > 100)
+          {
+            happiness.dataset.width = "100%";
           }
       }
     </script>
