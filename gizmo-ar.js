@@ -16,10 +16,10 @@ import { ARButton } from 'three/addons/webxr/ARButton.js';
 var randomGizmos =
 [
     // '/public/assets/gltf/chica.glb',
-    '/public/assets/gltf/foxy2.glb',
+    // '/public/assets/gltf/foxy2.glb',
     '/public/assets/gltf/ferret.glb',
     '/public/assets/gltf/capy.glb',
-    '/public/assets/gltf/tomb.glb',
+    // '/public/assets/gltf/tomb.glb',
     '/public/assets/gltf/duck.glb'
 ]
 let container;
@@ -64,8 +64,13 @@ function init() {
     
     document.getElementById("ARButton").addEventListener('click', (e) => {
         container.classList.remove("d-none");
-        document.getElementById("overlay").classList.remove("d-none")
         document.getElementById("overlay").classList.add("d-flex")
+        setTimeout(()=>{
+            
+            document.getElementById("overlay").classList.remove("d-none")
+            
+        }, 1500)
+
     })
     
     
@@ -79,6 +84,9 @@ function init() {
 
         if (reticle.visible && isDead) {
             isDead = false;
+            document.getElementById("hydrationBar").dataset.width = 100
+            document.getElementById("hungerBar").dataset.width = 100
+            document.getElementById("happinessBar").dataset.width = 100
             var loader = new GLTFLoader();
             // function to get a random gizmo from array
             function random_gizmo(randomGizmos) {
