@@ -19,8 +19,8 @@
         </div>
       </div>
       <div class="align-items-center">
-          <img style="bottom: 100px;" src="/assets/icons/icon-hunger.png">
-          <img style="bottom: 100px;" src="/assets/icons/icon-thirst.png">
+          <img style="bottom: 100px;" onclick="feedGizmo()" src="/assets/icons/icon-hunger.png">
+          <img style="bottom: 100px;" onclick="drinkGizmo()" src="/assets/icons/icon-thirst.png">
       </div>
     </div>
     <div id="app">
@@ -40,12 +40,34 @@
               </P>
           </div>
           <!-- code for the 'lil guy is imported here -->
-
       </div>
-
-      
 
     </div>
     <script type="module" src="/gizmo-ar.js"></script>
+    <script>
+      function feedGizmo() {
+
+          var hunger = document.getElementById("hungerBar")
+          var width = parseInt(hunger.dataset.width) + 30;
+          hunger.style.width = width + "%"
+          hunger.dataset.width = width;
+          if (hunger.dataset.width > 100)
+          {
+            hunger.dataset.width = "100%";
+          }
+      }
+
+      function drinkGizmo() {
+
+          var hydration = document.getElementById("hydrationBar")
+          var width = parseInt(hydration.dataset.width) + 30;
+          hydration.style.width = width + "%"
+          hydration.dataset.width = width;
+          if (hydration.dataset.width > 100)
+          {
+            hydration.dataset.width = "100%";
+          }
+      }
+    </script>
   </body>
 </html>
