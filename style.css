@@ -29,6 +29,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #f8dcf8;
 }
 
 h1 {
@@ -68,6 +69,14 @@ h1 {
   width: 100%;
   justify-content: inherit;
   display: flex;
+}
+
+.intro-box{
+  border: 2px solid #641e95;
+  opacity: 0.5;
+  border-radius: 25px;
+  padding: 1%;
+  color: #641e95;
 }
 
 button {
