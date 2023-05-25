@@ -81,6 +81,9 @@ function init() {
             // should show health bars 
             document.getElementById('overlay').classList.remove('d-none');
             document.getElementById('overlay').classList.add('d-flex');
+            
+            // start stats
+            initStats();
 
             let gizmoRandomUrl = random_gizmo(randomGizmos)
             if (scene.children.length > 2) {
@@ -147,70 +150,6 @@ function init() {
     reticle.matrixAutoUpdate = false;
     reticle.visible = false;
     scene.add(reticle);
-
-    // * hunger meter process
-    var hunger = document.getElementById("hungerBar");
-    var width = 100;
-    hunger.dataset.width = width;
-
-    var hungerInterval = setInterval (() => {
-        var width = parseInt(hunger.dataset.width);
-        width--;
-        hunger.style.width = width + "%";
-        hunger.dataset.width = width;
-        if (hunger.dataset.width <= "0")
-        {
-            clearInterval(hungerInterval)
-            killTheBaby()
-        }
-    }, 5000)
-
-    // * hydration meter process
-    var hydration = document.getElementById("hydrationBar");
-    var width = 100;
-    hydration.dataset.width = width;
-
-    var hydrationInterval = setInterval (() => {
-        var width = parseInt(hydration.dataset.width);
-        width--;
-        hydration.style.width = width + "%";
-        hydration.dataset.width = width;
-        if (hydration.dataset.width <= "0")
-        {
-            clearInterval(hydrationInterval)
-            killTheBaby()
-        }
-    }, 3000)
-
-    // * happiness meter process
-    var happiness = document.getElementById("happinessBar");
-    var width = 100;
-    happiness.dataset.width = width;
-
-    var happinessInterval = setInterval (() => {
-        var width = parseInt(happiness.dataset.width);
-        width--;
-        happiness.style.width = width + "%";
-        happiness.dataset.width = width;
-        if (happiness.dataset.width <= "0")
-        {
-            clearInterval(happinessInterval)
-        }
-    }, 10000)
-
-    function killTheBaby(){
-        var loader = new GLTFLoader();
-        loader.load(
-            '/public/assets/gltf/tomb.glb',
-            function (gltf) {
-                scene.add(gltf.scene)
-                scene.children[4].position.setFromMatrixPosition(scene.children[3].matrix)
-                scene.remove(scene.children[3])/ Object
-
-            },
-            // called while loading is progressing
-        );
-    }
 
     window.addEventListener('resize', onWindowResize);
 
@@ -286,4 +225,55 @@ function render(timestamp, frame) {
 
     renderer.render(scene, camera);
 
+}
+
+function initStats ()
+{
+    // * hunger meter process
+    var hunger = document.getElementById("hungerBar");
+    var width = 100;
+    hunger.dataset.width = width;
+
+    var hungerInterval = setInterval (() => {
+        var width = parseInt(hunger.dataset.width);
+        width--;
+        hunger.style.width = width + "%";
+        hunger.dataset.width = width;
+        if (hunger.dataset.width <= "0")
+        {
+            clearInterval(hungerInterval)
+        }
+    }, 5000)
+
+    // * hydration meter process
+    var hydration = document.getElementById("hydrationBar");
+    var width = 100;
+    hydration.dataset.width = width;
+
+    var hydrationInterval = setInterval (() => {
+        var width = parseInt(hydration.dataset.width);
+        width--;
+        hydration.style.width = width + "%";
+        hydration.dataset.width = width;
+        if (hydration.dataset.width <= "0")
+        {
+            clearInterval(hydrationInterval)
+        }
+    }, 3000)
+
+    // * happiness meter process
+    var happiness = document.getElementById("happinessBar");
+    var width = 100;
+    happiness.dataset.width = width;
+
+    var happinessInterval = setInterval (() => {
+        var width = parseInt(happiness.dataset.width);
+        width--;
+        happiness.style.width = width + "%";
+        happiness.dataset.width = width;
+        if (happiness.dataset.width <= "0")
+        {
+            clearInterval(happinessInterval)
+        }
+    }, 10000)
 }
