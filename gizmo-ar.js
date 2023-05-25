@@ -358,3 +358,5 @@ function initStats ()
         }
     }, 10000)
 }
+
+/* hi :) */
