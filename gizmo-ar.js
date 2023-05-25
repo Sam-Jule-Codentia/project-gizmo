@@ -62,6 +62,8 @@ function init() {
     
     document.getElementById("ARButton").addEventListener('click', (e) => {
         container.classList.remove("d-none");
+        document.getElementById("overlay").classList.remove("d-none")
+        document.getElementById("overlay").classList.add("d-flex")
     })
     
 
