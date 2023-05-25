@@ -60,10 +60,10 @@ function init() {
 
     document.body.appendChild(ARButton.createButton(renderer, { requiredFeatures: ['hit-test'], optionalFeatures: ['dom-overlay'], domOverlay: { root: document.getElementById("overlay") } }));
     
-    // document.getElementById("ARButton").addEventListener('click', (e) => {
-    //     container.classList.remove("d-none");
-    // })
-    //
+    document.getElementById("ARButton").addEventListener('click', (e) => {
+        container.classList.remove("d-none");
+    })
+    
 
     const geometry = new THREE.CylinderGeometry(0.1, 0.1, 0.2, 32).translate(0, 0.1, 0);
 
@@ -176,6 +176,22 @@ function init() {
             killTheBaby()
         }
     }, 3000)
+
+    // * happiness meter process
+    var happiness = document.getElementById("happinessBar");
+    var width = 100;
+    happiness.dataset.width = width;
+
+    var happinessInterval = setInterval (() => {
+        var width = parseInt(happiness.dataset.width);
+        width--;
+        happiness.style.width = width + "%";
+        happiness.dataset.width = width;
+        if (happiness.dataset.width <= "0")
+        {
+            clearInterval(happinessInterval)
+        }
+    }, 10000)
 
     function killTheBaby(){
         var loader = new GLTFLoader();

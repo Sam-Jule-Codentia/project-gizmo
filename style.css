@@ -103,6 +103,7 @@ button:focus-visible {
 
 
 #hungerBar {
+  margin-top: 1%;
   width: 100%;
   max-width: 100%;
   min-width: 0%;
@@ -133,6 +134,21 @@ button:focus-visible {
 }
 
 #hydrationBarProgress {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0%;
+  background-color: #877887;
+}
+
+#happinessBar {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0%;
+  height: 30px;
+  background-color: yellowgreen;
+}
+
+#happinessBarProgress {
   width: 100%;
   max-width: 100%;
   min-width: 0%;
