@@ -83,7 +83,19 @@ let space = '/public/assets/gltf/space/space.gltf';
                             
                             function ( gltf ) {
                         
-                                scene.add( gltf.scene );
+                                gltf.scene.traverse( function( object ) {
+
+                                    if ( object.isMesh ){
+                                        object.matrix.copyPosition(reticle.matrix)
+                                        object.position.set(reticle.position.x, reticle.position.y, reticle.position.z)
+                                        console.log(object.position)
+                                    } 
+                                
+                                } );
+                                
+                                scene.add(gltf.scene)
+                                console.log(reticle.matrix)
+                                scene.children[3].position.setFromMatrixPosition(reticle.matrix)
                         
                                 gltf.animations; // Array<THREE.AnimationClip>
                                 gltf.scene; // THREE.Group
