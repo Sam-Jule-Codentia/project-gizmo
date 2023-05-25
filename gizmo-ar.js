@@ -1,26 +1,16 @@
-import { WebXRButton } from '/public/webxr/util/webxr-button.js';
-import { Scene } from '/public/webxr/render/scenes/scene.js';
-import { Renderer, createWebGLContext } from '/public/webxr/render/core/renderer.js';
-import { Node } from '/public/webxr/render/core/node.js';
-import { Gltf2Node } from '/public/webxr/render/nodes/gltf2.js';
-import { DropShadowNode } from '/public/webxr/render/nodes/drop-shadow.js';
-import { vec3 } from '/public/webxr/render/math/gl-matrix.js';
-import { Ray } from '/public/webxr/render/math/ray.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import './style.css'
-'/public/assets/scene.glb'
 import * as THREE from 'three';
 import { ARButton } from 'three/addons/webxr/ARButton.js';
 
 // Gizmo assets
 var randomGizmos =
 [
-    // '/public/assets/gltf/chica.glb',
-    '/public/assets/gltf/foxy2.glb',
-    '/public/assets/gltf/ferret.glb',
-    '/public/assets/gltf/capy.glb',
-    '/public/assets/gltf/tomb.glb',
-    '/public/assets/gltf/duck.glb'
+    'assets/gltf/foxy2.glb',
+    'assets/gltf/ferret.glb',
+    'assets/gltf/capy.glb',
+    'assets/gltf/tomb.glb',
+    'assets/gltf/duck.glb'
 ]
 let container;
 let controller;
@@ -61,16 +51,16 @@ function init() {
     //
 
     document.body.appendChild(ARButton.createButton(renderer, { requiredFeatures: ['hit-test'], optionalFeatures: ['dom-overlay'], domOverlay: { root: document.getElementById("overlay") } }));
-    
+
     document.getElementById("ARButton").addEventListener('click', (e) => {
         container.classList.remove("d-none");
         document.getElementById("overlay").classList.remove("d-none")
         document.getElementById("overlay").classList.add("d-flex")
     })
-    
-    
+
+
     const geometry = new THREE.CylinderGeometry(0.1, 0.1, 0.2, 32).translate(0, 0.1, 0);
-    
+
     function onSelect() {
 
         if (reticle.visible && !isDead){
@@ -84,45 +74,45 @@ function init() {
             function random_gizmo(randomGizmos) {
                 return randomGizmos[Math.floor(Math.random() * randomGizmos.length)]
             }
-            
-            
+
+
             let gizmoRandomUrl = random_gizmo(randomGizmos)
             gizmo = gizmoRandomUrl;
             if (scene.children.length > 2) {
                 scene.remove(scene.children[3])
             }
             console.log(scene.children)
-            
+
             // start stats
             initStats();
-            
+
             loader.load(
                 // resource URL
                 gizmoRandomUrl,
                 // called when the resource is loaded
-                
+
                 function (gltf) {
-                    
+
                     gltf.scene.traverse(function (object) {
-                        
+
                         if (object.isMesh) {
                             object.matrix.copyPosition(reticle.matrix)
                             object.position.set(reticle.position.x, reticle.position.y, reticle.position.z)
                             console.log(object.position)
                         }
-                        
+
                     });
-                    
+
                     scene.add(gltf.scene)
                     console.log(reticle.matrix)
                     scene.children[3].position.setFromMatrixPosition(reticle.matrix)
-                    
+
                     gltf.animations; // Array<THREE.AnimationClip>
                     gltf.scene; // THREE.Group
                     gltf.scenes; // Array<THREE.Group>
                     gltf.cameras; // Array<THREE.Camera>
                     gltf.asset; // Object
-                    
+
                 },
                 // called while loading is progressing
                 function (xhr) {
@@ -209,7 +199,7 @@ function init() {
         isDead = true;
         var loader = new GLTFLoader();
         loader.load(
-            '/public/assets/gltf/tomb.glb',
+            'assets/gltf/tomb.glb',
             function (gltf) {
                 scene.add(gltf.scene)
                 scene.children[4].position.setFromMatrixPosition(scene.children[3].matrix)
@@ -290,14 +280,14 @@ function render(timestamp, frame) {
 
         }
 
-        // should show health bars 
+        // should show health bars
         document.getElementById('overlay').classList.remove('d-none');
         // document.getElementById('overlay').classList.add('d-flex');
-        
+
     }
-    
+
     renderer.render(scene, camera);
-    
+
 }
 
 function initStats ()
