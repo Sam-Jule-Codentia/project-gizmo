@@ -66,7 +66,7 @@ h1 {
 
 .top-menu-needs{
   width: 100%;
-  justify-content: inherit;
+  /* justify-content: inherit; */
   display: flex;
 }
 
@@ -89,15 +89,27 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-#hungerBarProgress {
-  width: 100%;
-  background-color: #0000;
-}
 
 #hungerBar {
-  width: 1%;
+  width: 100%;
   height: 30px;
-  background-color: #9B7A01;
+  background-color: #e7af50;
+}
+
+#hungerBarProgress {
+  width: 100%;
+  background-color: #877887;
+}
+
+#hydrationBar {
+  width: 100%;
+  height: 30px;
+  background-color: lightblue;
+}
+
+#hydrationBarProgress {
+  width: 100%;
+  background-color: #877887;
 }
 
 @media (prefers-color-scheme: light) {

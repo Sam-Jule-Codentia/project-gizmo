@@ -150,27 +150,55 @@ if (anchoredObjects.length > MAX_ANCHORED_OBJECTS) {
 }
 }
 
-//subtract fullness by 1 percent every minute
-let fullness = 100;
+let hunger = 0;
 setInterval(function(){
-// fullness = fullness - 1; console.log(fullness) 
-move()
+hungerProgress()
 },
-5000);
+1);
 
-var i = 0;
-function move() {
-  if (i == 0) {
-    i = 1;
-    var elem = document.getElementById("hungerBar");
-    elem.style.width = fullness - "%";
+// * hunger meter process
+function hungerProgress() {
+    if (hunger == 0) {
+      hunger = 1;
+      var elem = document.getElementById("hungerBar");
+      var width = 100;
+      var id = setInterval(frame, 5000);
+      function frame() {
+        if (width == 0) {
+          clearInterval(id);
+          hunger = 0;
+        } else {
+          width--;
+          elem.style.width = width + "%";
+        }
+      }
+    }
+  }
+
+var hydration = 0;
+setInterval(function(){
+hydrationProgress()
+},
+1);
+
+// * hydration meter process
+function hydrationProgress() {
+  if (hydration == 0) {
+    hydration = 1;
+    var elem = document.getElementById("hydrationBar");
+    var width = 100;
+    var id = setInterval(frame, 3000);
+    function frame() {
+      if (width == 0) {
+        clearInterval(id);
+        hydration = 0;
+      } else {
+        width--;
+        elem.style.width = width + "%";
+      }
+    }
   }
 }
-
-//subtract hydration by 1 percent every minute
-// let hydration = 100;
-// setInterval(function(){
-// hydration = hydration - 1; console.log(hydration) }, 3000);
 
 let rayOrigin = vec3.create();
 let rayDirection = vec3.create();
