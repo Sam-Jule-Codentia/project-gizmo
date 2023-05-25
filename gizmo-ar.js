@@ -76,7 +76,10 @@ function init() {
                 return randomGizmos[Math.floor(Math.random() * randomGizmos.length)]
             }
 
-            
+            // should show health bars 
+            document.getElementById('overlay').classList.remove('d-none');
+            document.getElementById('overlay').classList.add('d-flex');
+
             let gizmoRandomUrl = random_gizmo(randomGizmos)
             if (scene.children.length > 2) {
                 scene.remove(scene.children[3])
