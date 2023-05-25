@@ -153,12 +153,24 @@ if (anchoredObjects.length > MAX_ANCHORED_OBJECTS) {
 //subtract fullness by 1 percent every minute
 let fullness = 100;
 setInterval(function(){
-fullness = fullness - 1; console.log(fullness) }, 5000);
+// fullness = fullness - 1; console.log(fullness) 
+move()
+},
+5000);
+
+var i = 0;
+function move() {
+  if (i == 0) {
+    i = 1;
+    var elem = document.getElementById("hungerBar");
+    elem.style.width = fullness - "%";
+  }
+}
 
 //subtract hydration by 1 percent every minute
-let hydration = 100;
-setInterval(function(){
-hydration = hydration - 1; console.log(hydration) }, 3000);
+// let hydration = 100;
+// setInterval(function(){
+// hydration = hydration - 1; console.log(hydration) }, 3000);
 
 let rayOrigin = vec3.create();
 let rayDirection = vec3.create();
