@@ -156,6 +156,7 @@ function init() {
         if (hunger.dataset.width <= "0")
         {
             clearInterval(hungerInterval)
+            killTheBaby()
         }
     }, 5000)
 
@@ -172,8 +173,23 @@ function init() {
         if (hydration.dataset.width <= "0")
         {
             clearInterval(hydrationInterval)
+            killTheBaby()
         }
     }, 3000)
+
+    function killTheBaby(){
+        var loader = new GLTFLoader();
+        loader.load(
+            '/public/assets/gltf/tomb.glb',
+            function (gltf) {
+                scene.add(gltf.scene)
+                scene.children[4].position.setFromMatrixPosition(scene.children[3].matrix)
+                scene.remove(scene.children[3])/ Object
+
+            },
+            // called while loading is progressing
+        );
+    }
 
     window.addEventListener('resize', onWindowResize);
 
