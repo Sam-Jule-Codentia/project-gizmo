@@ -6,6 +6,7 @@ import {Gltf2Node} from '/public/webxr/render/nodes/gltf2.js';
 import {DropShadowNode} from '/public/webxr/render/nodes/drop-shadow.js';
 import {vec3} from '/public/webxr/render/math/gl-matrix.js';
 import {Ray} from '/public/webxr/render/math/ray.js';
+import './style.css'
 
 // XR globals.
 let xrButton = null;
@@ -57,8 +58,12 @@ if (navigator.xr) {
 }
 
 function onRequestSession() {
-return navigator.xr.requestSession('immersive-ar', {requiredFeatures: ['local', 'hit-test', 'anchors']})
-                    .then((session) => {
+return navigator.xr.requestSession('immersive-ar', 
+{
+    optionalFeatures: ['dom-overlay'],
+    domOverlay: { root: document.getElementById("overlay") },
+    requiredFeatures: ['local', 'hit-test', 'anchors']
+}).then((session) => {
     xrButton.setSession(session);
     onSessionStarted(session);
 });
