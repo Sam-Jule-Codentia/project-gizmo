@@ -133,57 +133,30 @@ function init() {
     reticle.visible = false;
     scene.add(reticle);
 
-    //
-
-    let hunger = 0;
-    setInterval(function () {
-        hungerProgress()
-    },
-        1);
-
     // * hunger meter process
-    function hungerProgress() {
-        if (hunger == 0) {
-            hunger = 1;
-            var elem = document.getElementById("hungerBar");
-            var width = 100;
-            var id = setInterval(frame, 5000);
-            function frame() {
-                if (width == 0) {
-                    clearInterval(id);
-                    hunger = 0;
-                } else {
-                    width--;
-                    elem.style.width = width + "%";
-                }
-            }
-        }
-    }
+    var hunger = document.getElementById("hungerBar");
+    var width = 100;
+    hunger.dataset.width = width;
 
-    var hydration = 0;
-    setInterval(function () {
-        hydrationProgress()
-    },
-        1);
+    setInterval (() => {
+        var width = parseInt(hunger.dataset.width);
+        width--;
+        hunger.style.width = width + "%";
+        hunger.dataset.width = width;
+    }, 5000)
 
     // * hydration meter process
-    function hydrationProgress() {
-        if (hydration == 0) {
-            hydration = 1;
-            var elem = document.getElementById("hydrationBar");
-            var width = 100;
-            var id = setInterval(frame, 3000);
-            function frame() {
-                if (width == 0) {
-                    clearInterval(id);
-                    hydration = 0;
-                } else {
-                    width--;
-                    elem.style.width = width + "%";
-                }
-            }
-        }
-    }
+    var hydration = document.getElementById("hydrationBar");
+    var width = 100;
+    hydration.dataset.width = width;
+
+    setInterval (() => {
+        var width = parseInt(hydration.dataset.width);
+        width--;
+        hydration.style.width = width + "%";
+        hydration.dataset.width = width;
+    }, 3000)
+
     window.addEventListener('resize', onWindowResize);
 
 }
